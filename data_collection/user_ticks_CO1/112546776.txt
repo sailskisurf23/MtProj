@@ -1,0 +1,1 @@
+{"hardest": "5.7", "average": "5.7", "ticks": [{"routeId": 110250818, "date": "2017-08-31", "pitches": 1, "notes": "", "style": "Lead", "leadStyle": ""}], "success": 1}

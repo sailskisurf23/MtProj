@@ -1,0 +1,1 @@
+{"hardest": "5.13a", "average": "5.12c", "ticks": [{"routeId": 105753574, "date": "2013-06-01", "pitches": 1, "notes": "", "style": "", "leadStyle": ""}, {"routeId": 105827117, "date": "2011-06-25", "pitches": 1, "notes": "more fun is hard to be had!", "style": "", "leadStyle": ""}], "success": 1}

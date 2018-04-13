@@ -1,0 +1,1 @@
+{"hardest": "5.9+", "average": "5.9+", "ticks": [{"routeId": 105748657, "date": "2017-12-29", "pitches": 6, "notes": "", "style": "Lead", "leadStyle": "Onsight"}], "success": 1}

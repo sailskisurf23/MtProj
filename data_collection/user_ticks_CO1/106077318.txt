@@ -1,0 +1,1 @@
+{"hardest": "5.?", "average": "5.?", "ticks": [], "success": 1}
