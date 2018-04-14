@@ -29,7 +29,8 @@ def get_ticks(userId):
     #parse json and return 'ticks'
     r = requests.get(url)
     parsed_json = json.loads(r.content)
-    return parsed_json
+    ticklist = [tick['routeId'] for tick in parsed_json['ticks']]
+    return ticklist
 
 def get_userids_for_zip(zip):
     """
