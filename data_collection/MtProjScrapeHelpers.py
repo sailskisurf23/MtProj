@@ -63,31 +63,27 @@ def parse_stars(routeid):
     userids -- ID_list
     star_counts -- ID_list
     """
-    try:
-        #build URL
-        base_url = 'https://www.mountainproject.com/'
-        query_str = 'route/stats/'
-        url = base_url+query_str+routeid
+    #build URL
+    base_url = 'https://www.mountainproject.com/'
+    query_str = 'route/stats/'
+    url = base_url+query_str+routeid
 
-        #route dividers
-        r = requests.get(url)
-        bs_obj = BeautifulSoup(r.content, 'html.parser')
-        box = bs_obj.find('table',{'class':"table table-striped"})
-        containers = box.findAll('tr')
+    #route dividers
+    r = requests.get(url)
+    bs_obj = BeautifulSoup(r.content, 'html.parser')
+    box = bs_obj.find('table',{'class':"table table-striped"})
+    containers = box.findAll('tr')
 
-        #within container grab userID, and number of stars
-        userids = []
-        star_counts = []
+    #within container grab userID, and number of stars
+    userids = []
+    star_counts = []
 
-        for container in containers:
-            href = container.a.get('href')
-            userid = href.split('/')[4]
-            star_count = len(container.find_all('img',{'src':"https://cdn.apstatic.com/img/stars/starBlue.svg"}))
-            userids.append(userid)
-            star_counts.append(star_count)
-    except:
-        print('something broke while parsing route: {}'.format(routeid))
-
+    for container in containers:
+        href = container.a.get('href')
+        userid = href.split('/')[4]
+        star_count = len(container.find_all('img',{'src':"https://cdn.apstatic.com/img/stars/starBlue.svg"}))
+        userids.append(userid)
+        star_counts.append(star_count)
 
 
     return userids,star_counts
