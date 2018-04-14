@@ -11,72 +11,83 @@ import MtProjScrapeHelpers as mh
 # import urllib
 # import json
 
+# write locations
+routeID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/routeID_bucket.csv'
+userID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/userID_bucket.csv'
+
 #import routeIDs for a handful of classics
 with open('ClassicRouteIds.csv') as f:
     classics = [line.strip() for line in f]
 
+
+
 #initialize 'buckets' for routes and users:
 #collected successfully, already searched, and got error trying to search
-routeid_bucket = set(classics)
-userid_bucket = set()
+class MPS(object):
 
-routes_searched_bucket = set()
-users_searched_bucket = set()
+    def __init__(self,startroutes):
+        self.routeid_bucket = set(startroutes)
+        self.userid_bucket = set()
 
-route_errors_bucket = set()
-user_errors_bucket = set()
+        self.routes_searched_bucket = set()
+        self.users_searched_bucket = set()
 
-#loop through routes and grab userids
-def add_to_user_bucket(routeid_bucket,routes_searched_bucket,):
-    for routeid in list(routeid_bucket.difference(routes_searched_bucket)\
-    .difference(route_errors_bucket))[:2]:
-        try:
-            userids, stars = mh.parse_stars(str(routeid))
-            userset = set(userids)
-            userid_bucket = userid_bucket.union(userset)
-            routes_searched_bucket = routes_searched_bucket.union(set([routeid]))
+        self.route_errors_bucket = set()
+        self.user_errors_bucket = set()
 
-        except:
-            route_errors_bucket = route_errors_bucket.union(set([routeid]))
-            print('Error while parsing route {}'.format(route))
-            raise
+    #loop through routes and grab userids
+    def add_to_user_bucket(self):
+        for routeid in list(self.routeid_bucket\
+        .difference(self.routes_searched_bucket)\
+        .difference(self.route_errors_bucket)):
+            try:
+                userids, stars = mh.parse_stars(str(routeid))
+                userset = set(userids)
+                self.userid_bucket = self.userid_bucket.union(userset)
+                self.routes_searched_bucket = self.routes_searched_bucket\
+                                                    .union(set([routeid]))
 
-def add_to_route_bucket(userid_bucket):
-    for userid in list(userid_bucket.difference(users_searched_bucket)\
-    .difference(user_errors_bucket))[:2]:
-        try:
-            routeids = mh.get_ticks(userid)
-            routeset = set(routeids)
-            routeid_bucket = routeid_bucket.union(routeset)
-            users_searched_bucket = users_searched_bucket.union(set([userid]))
+            except:
+                self.route_errors_bucket = self.route_errors_bucket\
+                                                .union(set([routeid]))
+                print('Error while parsing route {}'.format(route))
+                raise
 
-        except:
-            user_errors_bucket = user_errors_bucket.union(set([userid]))
-            print('Error while parsing user {}'.format(userid))
-            raise
-    return routeid_bucket
+    def add_to_route_bucket(self):
+        for userid in list(self.userid_bucket\
+        .difference(self.users_searched_bucket)\
+        .difference(self.user_errors_bucket)):
+            try:
+                routeids = mh.get_ticks(userid)
+                routeset = set(routeids)
+                self.routeid_bucket = self.routeid_bucket.union(routeset)
+                self.users_searched_bucket = self.users_searched_bucket\
+                                                    .union(set([userid]))
 
-#write userids and routeids collected thus far to file:
-routeID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/routeID_bucket.csv'
-userID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/userID_bucket.csv'
+            except:
+                self.user_errors_bucket = self.user_errors_bucket\
+                                                .union(set([userid]))
+                print('Error while parsing user {}'.format(userid))
+                raise
+        return routeid_bucket
 
-#write routes
-print('writing '+ str(len(routeid_bucket))+' routes to:\n {}'\
-.format(routeID_write_loc))
-routeid_bucket_list = list(routeid_bucket)
-with open(routeID_write_loc,'w') as f1:
-    wr = csv.writer(f1)
-    for id in routeid_bucket_list:
-        wr.writerow([id])
+    def write_routes(self,loc):
+        print('writing '+ str(len(self.routeid_bucket))
+                +' routes to:\n {}'.format(loc))
+        routeid_list = list(self.routeid_bucket)
+        with open(loc,'w+') as f:
+            wr = csv.writer(f)
+            for id in routeid_list:
+                wr.writerow([id])
 
-#write users
-print('writing '+ str(len(userid_bucket))+' users to:\n {}'\
-.format(userID_write_loc))
-userid_bucket_list = list(userid_bucket)
-with open(userID_write_loc,'w') as f2:
-    wr = csv.writer(f2)
-    for id in userid_bucket_list:
-        wr.writerow([id])
+    def write_users(self,loc):
+        print('writing '+ str(len(self.userid_bucket))
+                +' users to:\n {}'.format(loc))
+        userid_list = list(self.userid_bucket)
+        with open(userID_write_loc,'w+') as f:
+            wr = csv.writer(f)
+            for id in userid_list:
+                wr.writerow([id])
 
 
 
