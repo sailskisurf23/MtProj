@@ -9,10 +9,6 @@ import json
 import pickle
 
 
-
-
-
-
 def main():
     with open ('CO_users.txt', 'rb') as fp:
         ids = pickle.load(fp)
