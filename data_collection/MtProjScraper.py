@@ -29,7 +29,9 @@ class MPS(object):
         self.route_errors_bucket = set()
         self.user_errors_bucket = set()
 
-    #loop through routes and grab userIDs
+    def run_scraper
+
+
     def add_to_user_bucket(self):
         """
         Loop through routeID_bucket, parse userIDs from route page,

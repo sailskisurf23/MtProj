@@ -15,6 +15,8 @@ def get_ticks(userId):
     Returns:
     list
     """
+    time.sleep(random.random())
+
     #build URL
     base_url = 'https://www.mountainproject.com/'
     query_str = 'data/get-ticks?'
@@ -40,6 +42,7 @@ def get_userids_for_zip(zip):
     Returns:
     list
     """
+    time.sleep(random.random())
     search_url = 'https://www.mountainproject.com/partner-finder/results?distance=50&location='+zip
     r = requests.get(search_url)
     bs_obj = BeautifulSoup(r.content, 'html.parser')
@@ -63,6 +66,8 @@ def parse_stars(routeid):
     userids -- ID_list
     star_counts -- ID_list
     """
+    time.sleep(random.random())
+
     #build URL
     base_url = 'https://www.mountainproject.com/'
     query_str = 'route/stats/'
