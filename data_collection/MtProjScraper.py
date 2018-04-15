@@ -84,7 +84,7 @@ class MPS(object):
         print('writing '+ str(len(self.userid_bucket))
                 +' users to:\n {}'.format(loc))
         userid_list = list(self.userid_bucket)
-        with open(userID_write_loc,'w+') as f:
+        with open(loc,'w+') as f:
             wr = csv.writer(f)
             for id in userid_list:
                 wr.writerow([id])

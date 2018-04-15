@@ -32,6 +32,7 @@ def get_ticks(userId):
     ticklist = [tick['routeId'] for tick in parsed_json['ticks']]
     return ticklist
 
+
 def get_userids_for_zip(zip):
     """
     Returns list of userids for a given zipcode
@@ -52,6 +53,7 @@ def get_userids_for_zip(zip):
         id = href[href.find('user/')+5:href.find('user/')+14]
         ID_list.append(id.split('/')[0])
     return ID_list
+
 
 def parse_stars(routeid):
     """
@@ -85,6 +87,4 @@ def parse_stars(routeid):
         star_count = len(container.find_all('img',{'src':"https://cdn.apstatic.com/img/stars/starBlue.svg"}))
         userids.append(userid)
         star_counts.append(star_count)
-
-
     return userids,star_counts
