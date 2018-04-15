@@ -12,7 +12,6 @@ class MPS(object):
             userID_bucket (set): users harvested
             users_searched_bucket (set): routes already searched
             user_errors_bucket (set): error when searching these users
-
         """
 
     def __init__(self,startroutes):
@@ -133,14 +132,3 @@ class MPS(object):
             wr = csv.writer(f)
             for id in user_errors_list:
                 wr.writerow([id])
-
-
-
-
-
-
-
-#output errorlog
-
-#user_errors_bucket_list = list(user_errors_bucket)
-#route_errors_bucket_list = list(route_errors_bucket)
