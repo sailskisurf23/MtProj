@@ -2,10 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import random
 import json
-
-# import pandas as pd
-# import numpy as np
-# import time
+import time
 
 
 def get_ticks(userId):
@@ -84,7 +81,8 @@ def parse_stars(routeid):
     for container in containers:
         href = container.a.get('href')
         userid = href.split('/')[4]
-        star_count = len(container.find_all('img',{'src':"https://cdn.apstatic.com/img/stars/starBlue.svg"}))
+        star_count = len(container.find_all('img',
+                        {'src':"https://cdn.apstatic.com/img/stars/starBlue.svg"}))
         userids.append(userid)
         star_counts.append(star_count)
     return userids,star_counts

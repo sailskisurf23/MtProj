@@ -11,14 +11,6 @@ import MtProjScrapeHelpers as mh
 # import urllib
 # import json
 
-# write locations
-routeID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/routeID_bucket.csv'
-userID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/userID_bucket.csv'
-
-#import routeIDs for a handful of classics
-with open('ClassicRouteIds.csv') as f:
-    classics = [line.strip() for line in f]
-
 
 
 #initialize 'buckets' for routes and users:
@@ -88,6 +80,30 @@ class MPS(object):
             wr = csv.writer(f)
             for id in userid_list:
                 wr.writerow([id])
+
+    def write_routes(self,loc):
+        print('writing '+ str(len(self.routeid_bucket))
+                +' routes to:\n {}'.format(loc))
+        routeid_list = list(self.routeid_bucket)
+        with open(loc,'w+') as f:
+            wr = csv.writer(f)
+            for id in routeid_list:
+                wr.writerow([id])
+
+
+
+
+
+
+# write locations
+routeID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/routeID_bucket.csv'
+userID_write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data/userID_bucket.csv'
+
+#import routeIDs for a handful of classics
+with open('ClassicRouteIds.csv') as f:
+    classics = [line.strip() for line in f]
+
+
 
 
 
