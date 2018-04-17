@@ -1,1 +1,0 @@
-{"hardest": "5.7+", "average": "5.7+", "ticks": [{"routeId": 105749320, "date": "2017-04-11", "pitches": 1, "notes": "", "style": "", "leadStyle": ""}, {"routeId": 112797546, "date": "1997-02-08", "pitches": 1, "notes": "Remembering a great weekend on the ice.", "style": "Lead", "leadStyle": ""}], "success": 1}
