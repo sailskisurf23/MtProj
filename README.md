@@ -6,6 +6,14 @@ Mountain project is a climbing website with an extensive [route database](https:
 
 Mountain Project currently has [partner search](https://www.mountainproject.com/partner-finder) function that allows users to search partners based on climbing ability and a route search function for finding routes based on difficulty. Both functions can be searched based on location as well.
 
+### Research
+The approaches to be employed in this project have been implemented and documented by others:
+
+[Recommender tutorial](https://towardsdatascience.com/how-did-we-build-book-recommender-systems-in-an-hour-the-fundamentals-dfee054f978e)
+
+[NLP project on data scraped from forum](https://nycdatascience.com/blog/student-works/topic-modeling-user-clustering-internet-discussion-forums-case-study/)
+
+
 ### Objective
 
 I want to make it easier for users to find routes that they will be interested in and partners who will be a good fit. My goal is to build a partner and route recommenders based on route and user data harvested from the Mountain Project website.
