@@ -29,8 +29,6 @@ class MPS(object):
         self.route_errors_bucket = set()
         self.user_errors_bucket = set()
 
-        self.num_userIDs = len(self.userID_bucket)
-        self.num_routeIDs = len(self.routeID_bucket)
 
     def run_scraper(self, n):
         """
@@ -40,42 +38,53 @@ class MPS(object):
             self.add_to_user_bucket()
             self.add_to_route_bucket()
 
-    def add_to_user_bucket(self):
+    def add_to_user_bucket(self, n=None):
         """
         Loop through routeID_bucket, parse userIDs from route page,
         and add to userID_bucket. Omits routeIDs already searched.
         """
+
+        if n==None:
+            print('Looking through {} routes'.format(len(self.routeID_bucket)))
+        else:
+            print('Looking through {} routes'.format(n))
+
         for routeID in list(self.routeID_bucket
                                 .difference(self.routes_searched_bucket)
-                                .difference(self.route_errors_bucket)):
+                                .difference(self.route_errors_bucket))[:n]:
             try:
                 userIDs, stars = mh.parse_stars(str(routeID))
                 userset = set(userIDs)
                 self.userID_bucket = self.userID_bucket.union(userset)
-                self.routes_searched_bucket = self.routes_searched_bucket.union({[routeID]})
+                self.routes_searched_bucket = self.routes_searched_bucket.union(set([routeID]))
 
             except:
-                self.route_errors_bucket = self.route_errors_bucket.union({[routeID]})
+                self.route_errors_bucket = self.route_errors_bucket.union(set([routeID]))
                 print('Error while parsing route {}'.format(routeID))
                 raise
 
-    def add_to_route_bucket(self):
+    def add_to_route_bucket(self,n=None):
         """
         Loop through userID_bucket, parse routeIDs from users ticklist,
         and add to routeID_bucket. Omits userIDs already searched.
         """
+        if n==None:
+            print('Looking through {} users'.format(len(self.userID_bucket)))
+        else:
+            print('Looking through {} users'.format(n))
+
         for userID in list(self.userID_bucket
                                .difference(self.users_searched_bucket)
-                               .difference(self.user_errors_bucket)):
+                               .difference(self.user_errors_bucket))[:n]:
             try:
                 routeIDs = mh.get_ticks(userID)
                 routeset = set(routeIDs)
                 self.routeID_bucket = self.routeID_bucket.union(routeset)
-                self.users_searched_bucket = self.users_searched_bucket.union({[userID]})
+                self.users_searched_bucket = self.users_searched_bucket.union(set([userID]))
 
             except:
                 self.user_errors_bucket = self.user_errors_bucket\
-                                                .union({[userID]})
+                                                .union(set([userID]))
                 print('Error while parsing user {}'.format(userID))
                 raise
 
