@@ -31,7 +31,6 @@ def get_ticks(userId):
     ticklist = [tick['routeId'] for tick in parsed_json['ticks']]
     return ticklist
 
-
 def get_userids_for_zip(zipcode):
     """
     Returns list of userids for a given zipcode
@@ -54,7 +53,6 @@ def get_userids_for_zip(zipcode):
         ID_list.append(userid.split('/')[0])
     return ID_list
 
-
 def parse_stars(routeid):
     """
     Get all user ratings for a given routeid.
@@ -76,6 +74,24 @@ def parse_stars(routeid):
     # route dividers
     r = requests.get(url)
     bs_obj = BeautifulSoup(r.content, 'html.parser')
+    box = bs_obj.find('table', {'class': "table table-striped"})
+    containers = box.findAll('tr')
+
+    # within container grab userID, and number of stars
+    userids = []
+    star_counts = []
+
+    for container in containers:
+        href = container.a.get('href')
+        userid = href.split('/')[4]
+        star_count = len(container.find_all('img', {'src': "https://cdn.apstatic.com/img/stars/starBlue.svg"}))
+        userids.append(userid)
+        star_counts.append(star_count)
+    return userids, star_counts
+
+def parse_stats(content):
+    # FIX to take whole Mongo DB entry and return tuples of (routeID,userID,rating)
+    bs_obj = BeautifulSoup(content, 'html.parser')
     box = bs_obj.find('table', {'class': "table table-striped"})
     containers = box.findAll('tr')
 
