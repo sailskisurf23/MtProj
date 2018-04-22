@@ -14,14 +14,14 @@ class MPS(object):
         user_errors_bucket (set): error when searching these users
     """
 
-    def __init__(self, startroutes):
+    def __init__(self, startusers=None, startroutes=None):
         """Initalize scraper object with a handful of popular routes
 
         Args:
             startroutes (list): initalize scraper object with a handful of popular routes
         """
         self.routeID_bucket = set(startroutes)
-        self.userID_bucket = set()
+        self.userID_bucket = set(startusers)
 
         self.routes_searched_bucket = set()
         self.users_searched_bucket = set()
