@@ -1,6 +1,0 @@
-retrieving route: 105906276
-0 / 123844 routes completed
-writing to db, route: 105906276
-retrieving route: 105906285
-1 / 123844 routes completed
-writing to db, route: 105906285

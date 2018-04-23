@@ -8,7 +8,7 @@ base_url = 'https://www.mountainproject.com/'
 #Establish output destinations:
 client = MongoClient() # adjust this line when wrting to s3 bucket to include s3 url/port info?
 db = client.routes_db
-log_path = 'log_tester.txt'
+log_path = 'log_tester2.txt'
 
 def route_to_db(base_url,routeid):
         '''
@@ -40,11 +40,11 @@ def main():
     with open(loc_r) as f:
         routes = [line.strip() for line in f]
     #create logfile and direct prints to it
-    old_stdout = sys.stdout
+    # old_stdout = sys.stdout
     log_file = open(log_path,"w")
     sys.stdout = log_file
     #loop through and scrape routes to db
-    for i,routeid in enumerate(routes[60:62]):
+    for i,routeid in enumerate(routes[:2]):
         try:
             print('retrieving route: {}'.format(routeid))
             print('{} / {} routes completed'.format(i,len(routes)))
@@ -52,24 +52,9 @@ def main():
         except:
             print('error while retreving route: {}'.format(routeid))
             time.sleep(10)
-
-    sys.stdout = old_stdout
+    #close logfile
+    # sys.stdout = old_stdout
     log_file.close()
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-#log fle
-#  seed with where kleft offers
