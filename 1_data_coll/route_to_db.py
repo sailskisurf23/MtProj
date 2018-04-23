@@ -13,11 +13,9 @@ log_path = 'log_tester2.txt'
 def route_to_db(base_url,routeid):
         '''
         Scrape contents of route description and route stats page; write to MongoDBself.
-
-        Parameters
+        --Parameters--
         base_url (str)
         routeid (str)
-
         '''
         #build URLs
         url1 = base_url+'route/'+routeid
