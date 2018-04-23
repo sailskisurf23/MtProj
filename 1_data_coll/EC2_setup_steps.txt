@@ -1,0 +1,22 @@
+
+#tunnel through
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com
+
+
+
+#install anaconda
+https://medium.com/@josemarcialportilla/getting-spark-python-and-jupyter-notebook-running-on-amazon-ec2-dec599e1c297
+
+#install mongo
+https://docs.mongodb.com/ecosystem/platforms/amazon-ec2/
+
+
+
+#move script over
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/1_data_coll/route_to_db.py ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
+
+#transfer classics
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/ClassicRouteIds.csv ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
+
+#transfer test rts
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/testroutes.csv ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
