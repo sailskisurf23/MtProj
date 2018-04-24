@@ -1,3 +1,8 @@
+#instance names
+
+
+
+
 
 #tunnel through
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com
@@ -9,8 +14,7 @@ https://medium.com/@josemarcialportilla/getting-spark-python-and-jupyter-noteboo
 
 #install mongo
 https://docs.mongodb.com/ecosystem/platforms/amazon-ec2/
-
-
+pip install pymongo
 
 #move script over
 scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/1_data_coll/route_to_db.py ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
@@ -20,3 +24,12 @@ scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Caps
 
 #transfer test rts
 scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/testroutes.csv ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
+
+
+# run script on EC2
+
+# create DB dump on EC2
+mongodump -d routes_db #-o <directory_backup>
+
+# transfer file back from EC2
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem <EC2NAME>:/home/ec2-user/dump/routes_db/* <local_path>

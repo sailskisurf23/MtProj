@@ -18,6 +18,6 @@ Today,
 
 3. I'll then do some basic EDA, looking at the sparsity of the data (how many routes users have rated etc.), then do SVD using surprise to make my first iteration of a recommender on a small subsample of the data.
 
-4. Lastly, if time permits, I'd like to get a ppt mockup of the front end over to Ian so that I can flesh out what the basic functionality of the recommender should be
+4. *Lastly, if time permits, I'd like to get a ppt mockup of the front end over to Ian so that I can flesh out what the basic functionality of the recommender should be*
 
 5. Build calendar for 2 week timeframe

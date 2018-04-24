@@ -89,13 +89,27 @@ def parse_stars(routeid):
         star_counts.append(star_count)
     return userids, star_counts
 
-def parse_stats(content):
-    # FIX to take whole Mongo DB entry and return tuples of (routeID,userID,rating)
-    bs_obj = BeautifulSoup(content, 'html.parser')
+def parse_stats(entry):
+
+    """
+    Takes a mongo entry and returns list of tuples (routeid, userid, num_stars)
+
+    --Parameters--
+    entry: dict
+
+    --Returns--
+    list of tuples
+    """
+
+    stats = entry['stats']
+    routeid = entry['routeid']
+
+    bs_obj = BeautifulSoup(stats, 'html.parser')
     box = bs_obj.find('table', {'class': "table table-striped"})
     containers = box.findAll('tr')
 
     # within container grab userID, and number of stars
+    routeids = []
     userids = []
     star_counts = []
 
@@ -103,6 +117,10 @@ def parse_stats(content):
         href = container.a.get('href')
         userid = href.split('/')[4]
         star_count = len(container.find_all('img', {'src': "https://cdn.apstatic.com/img/stars/starBlue.svg"}))
+        routeids.append(routeid)
         userids.append(userid)
         star_counts.append(star_count)
-    return userids, star_counts
+    return [tup for tup in zip(routeids,userids,star_counts)]
+
+
+    

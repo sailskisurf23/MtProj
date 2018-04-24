@@ -2,7 +2,7 @@ import requests, random, time, sys
 from pymongo import MongoClient
 
 #Input file paths:
-loc_r = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/data1/routes4.csv'
+loc_r = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/routes_sample.csv'
 base_url = 'https://www.mountainproject.com/'
 
 #Establish output destinations:
@@ -38,11 +38,11 @@ def main():
     with open(loc_r) as f:
         routes = [line.strip() for line in f]
     #create logfile and direct prints to it
-    # old_stdout = sys.stdout
+    old_stdout = sys.stdout
     log_file = open(log_path,"w")
     sys.stdout = log_file
     #loop through and scrape routes to db
-    for i,routeid in enumerate(routes[:2]):
+    for i,routeid in enumerate(routes[:100]):
         try:
             print('retrieving route: {}'.format(routeid))
             print('{} / {} routes completed'.format(i,len(routes)))
@@ -51,7 +51,7 @@ def main():
             print('error while retreving route: {}'.format(routeid))
             time.sleep(10)
     #close logfile
-    # sys.stdout = old_stdout
+    sys.stdout = old_stdout
     log_file.close()
 
 if __name__ == '__main__':

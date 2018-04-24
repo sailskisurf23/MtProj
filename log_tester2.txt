@@ -1,0 +1,300 @@
+retrieving route: 106299394
+0 / 57039 routes completed
+writing to db, route: 106299394
+retrieving route: 109576195
+1 / 57039 routes completed
+writing to db, route: 109576195
+retrieving route: 112459780
+2 / 57039 routes completed
+writing to db, route: 112459780
+retrieving route: 106299399
+3 / 57039 routes completed
+writing to db, route: 106299399
+retrieving route: 106561551
+4 / 57039 routes completed
+writing to db, route: 106561551
+retrieving route: 112459792
+5 / 57039 routes completed
+writing to db, route: 112459792
+retrieving route: 107347985
+6 / 57039 routes completed
+writing to db, route: 107347985
+retrieving route: 109051923
+7 / 57039 routes completed
+writing to db, route: 109051923
+retrieving route: 105906197
+8 / 57039 routes completed
+writing to db, route: 105906197
+retrieving route: 107216917
+9 / 57039 routes completed
+writing to db, route: 107216917
+retrieving route: 112459797
+10 / 57039 routes completed
+writing to db, route: 112459797
+retrieving route: 107741208
+11 / 57039 routes completed
+writing to db, route: 107741208
+retrieving route: 105906201
+12 / 57039 routes completed
+writing to db, route: 105906201
+retrieving route: 106299414
+13 / 57039 routes completed
+writing to db, route: 106299414
+retrieving route: 110231574
+14 / 57039 routes completed
+writing to db, route: 110231574
+retrieving route: 105906204
+15 / 57039 routes completed
+writing to db, route: 105906204
+retrieving route: 107347998
+16 / 57039 routes completed
+writing to db, route: 107347998
+retrieving route: 114032671
+17 / 57039 routes completed
+writing to db, route: 114032671
+retrieving route: 106299424
+18 / 57039 routes completed
+writing to db, route: 106299424
+retrieving route: 109051939
+19 / 57039 routes completed
+writing to db, route: 109051939
+retrieving route: 110886957
+20 / 57039 routes completed
+writing to db, route: 110886957
+retrieving route: 109051949
+21 / 57039 routes completed
+writing to db, route: 109051949
+retrieving route: 109838387
+22 / 57039 routes completed
+writing to db, route: 109838387
+retrieving route: 113901621
+23 / 57039 routes completed
+writing to db, route: 113901621
+retrieving route: 105906234
+24 / 57039 routes completed
+writing to db, route: 105906234
+retrieving route: 105906239
+25 / 57039 routes completed
+writing to db, route: 105906239
+retrieving route: 106692671
+26 / 57039 routes completed
+writing to db, route: 106692671
+retrieving route: 106430532
+27 / 57039 routes completed
+writing to db, route: 106430532
+retrieving route: 105906244
+28 / 57039 routes completed
+writing to db, route: 105906244
+retrieving route: 110231621
+29 / 57039 routes completed
+writing to db, route: 110231621
+retrieving route: 110493767
+30 / 57039 routes completed
+writing to db, route: 110493767
+retrieving route: 105906249
+31 / 57039 routes completed
+writing to db, route: 105906249
+retrieving route: 112459853
+32 / 57039 routes completed
+writing to db, route: 112459853
+retrieving route: 106430543
+33 / 57039 routes completed
+writing to db, route: 106430543
+retrieving route: 106823761
+34 / 57039 routes completed
+writing to db, route: 106823761
+retrieving route: 106561619
+35 / 57039 routes completed
+writing to db, route: 106561619
+retrieving route: 112984148
+36 / 57039 routes completed
+writing to db, route: 112984148
+retrieving route: 112459864
+37 / 57039 routes completed
+writing to db, route: 112459864
+retrieving route: 109969496
+38 / 57039 routes completed
+writing to db, route: 109969496
+retrieving route: 114032729
+39 / 57039 routes completed
+writing to db, route: 114032729
+retrieving route: 112459870
+40 / 57039 routes completed
+writing to db, route: 112459870
+retrieving route: 114032736
+41 / 57039 routes completed
+writing to db, route: 114032736
+retrieving route: 105906276
+42 / 57039 routes completed
+writing to db, route: 105906276
+retrieving route: 112459883
+43 / 57039 routes completed
+writing to db, route: 112459883
+retrieving route: 105906285
+44 / 57039 routes completed
+writing to db, route: 105906285
+retrieving route: 112459887
+45 / 57039 routes completed
+writing to db, route: 112459887
+retrieving route: 112459890
+46 / 57039 routes completed
+writing to db, route: 112459890
+retrieving route: 110231668
+47 / 57039 routes completed
+writing to db, route: 110231668
+retrieving route: 105906293
+48 / 57039 routes completed
+writing to db, route: 105906293
+retrieving route: 112459894
+49 / 57039 routes completed
+writing to db, route: 112459894
+retrieving route: 107741304
+50 / 57039 routes completed
+writing to db, route: 107741304
+retrieving route: 107872377
+51 / 57039 routes completed
+writing to db, route: 107872377
+retrieving route: 110755963
+52 / 57039 routes completed
+writing to db, route: 110755963
+retrieving route: 108134524
+53 / 57039 routes completed
+writing to db, route: 108134524
+retrieving route: 109314177
+54 / 57039 routes completed
+writing to db, route: 109314177
+retrieving route: 112459911
+55 / 57039 routes completed
+writing to db, route: 112459911
+retrieving route: 106561673
+56 / 57039 routes completed
+writing to db, route: 106561673
+retrieving route: 109969547
+57 / 57039 routes completed
+writing to db, route: 109969547
+retrieving route: 106561677
+58 / 57039 routes completed
+writing to db, route: 106561677
+retrieving route: 105906319
+59 / 57039 routes completed
+writing to db, route: 105906319
+retrieving route: 106823826
+60 / 57039 routes completed
+writing to db, route: 106823826
+retrieving route: 105906323
+61 / 57039 routes completed
+writing to db, route: 105906323
+retrieving route: 106561688
+62 / 57039 routes completed
+writing to db, route: 106561688
+retrieving route: 109576345
+63 / 57039 routes completed
+writing to db, route: 109576345
+retrieving route: 106823836
+64 / 57039 routes completed
+writing to db, route: 106823836
+retrieving route: 107479199
+65 / 57039 routes completed
+writing to db, route: 107479199
+retrieving route: 109969567
+66 / 57039 routes completed
+writing to db, route: 109969567
+retrieving route: 110362785
+67 / 57039 routes completed
+writing to db, route: 110362785
+retrieving route: 106823849
+68 / 57039 routes completed
+writing to db, route: 106823849
+retrieving route: 109707441
+69 / 57039 routes completed
+writing to db, route: 109707441
+retrieving route: 112853174
+70 / 57039 routes completed
+writing to db, route: 112853174
+retrieving route: 106823863
+71 / 57039 routes completed
+writing to db, route: 106823863
+retrieving route: 112459975
+72 / 57039 routes completed
+writing to db, route: 112459975
+retrieving route: 106430666
+73 / 57039 routes completed
+writing to db, route: 106430666
+retrieving route: 112459979
+74 / 57039 routes completed
+writing to db, route: 112459979
+retrieving route: 112459982
+75 / 57039 routes completed
+writing to db, route: 112459982
+retrieving route: 112459995
+76 / 57039 routes completed
+writing to db, route: 112459995
+retrieving route: 112460000
+77 / 57039 routes completed
+writing to db, route: 112460000
+retrieving route: 106561760
+78 / 57039 routes completed
+writing to db, route: 106561760
+retrieving route: 106692834
+79 / 57039 routes completed
+writing to db, route: 106692834
+retrieving route: 107479268
+80 / 57039 routes completed
+writing to db, route: 107479268
+retrieving route: 108134629
+81 / 57039 routes completed
+writing to db, route: 108134629
+retrieving route: 108003559
+82 / 57039 routes completed
+writing to db, route: 108003559
+retrieving route: 105906409
+83 / 57039 routes completed
+writing to db, route: 105906409
+retrieving route: 106561769
+84 / 57039 routes completed
+writing to db, route: 106561769
+retrieving route: 107348203
+85 / 57039 routes completed
+writing to db, route: 107348203
+retrieving route: 105906422
+86 / 57039 routes completed
+writing to db, route: 105906422
+retrieving route: 105906426
+87 / 57039 routes completed
+writing to db, route: 105906426
+retrieving route: 108003579
+88 / 57039 routes completed
+writing to db, route: 108003579
+retrieving route: 112460028
+89 / 57039 routes completed
+writing to db, route: 112460028
+retrieving route: 108134652
+90 / 57039 routes completed
+writing to db, route: 108134652
+retrieving route: 106037501
+91 / 57039 routes completed
+writing to db, route: 106037501
+retrieving route: 112460031
+92 / 57039 routes completed
+writing to db, route: 112460031
+retrieving route: 107479296
+93 / 57039 routes completed
+writing to db, route: 107479296
+retrieving route: 109445377
+94 / 57039 routes completed
+writing to db, route: 109445377
+retrieving route: 112197893
+95 / 57039 routes completed
+writing to db, route: 112197893
+retrieving route: 106430726
+96 / 57039 routes completed
+writing to db, route: 106430726
+retrieving route: 106299653
+97 / 57039 routes completed
+writing to db, route: 106299653
+retrieving route: 112460041
+98 / 57039 routes completed
+writing to db, route: 112460041
+retrieving route: 106037518
+99 / 57039 routes completed
+writing to db, route: 106037518
