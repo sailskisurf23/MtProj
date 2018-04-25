@@ -2,15 +2,7 @@ Hello,
 
 My name is Colin and I'm a Data Scientist!
 
-Over the weekend I scraped a list of most of the routeID's and UserID's from the Website, Mt Project.com
-
-Then I wanted to figure out how to set up a Mongo DB and dump the full content for each 'route' and 'routestats' page into a mongoDB.
-
-I figured out how to do this locally, but I ran out of time to thread this off on an EC2.
-
-
-
-Today,
+Since Monday I accomplished,
 
 1. *get final clean route list*
 
@@ -22,6 +14,8 @@ Today,
 
 5. *Build calendar for 2 week timeframe*
 
+
+Today,
 
 1. I'll then do some basic EDA, looking at the sparsity of the data (how many routes users have rated etc.),
 

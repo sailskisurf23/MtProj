@@ -1,32 +1,57 @@
 #instance names
-
-
-
-
+#1
+ec2-user@ec2-13-59-88-140.us-east-2.compute.amazonaws.com
+#2
+ec2-user@ec2-18-188-204-117.us-east-2.compute.amazonaws.com
+#3
+ec2-user@ec2-18-188-235-107.us-east-2.compute.amazonaws.com
+#4
+ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com
+#5
+ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
 
 #tunnel through
-ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-13-59-88-140.us-east-2.compute.amazonaws.com
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-188-204-117.us-east-2.compute.amazonaws.com
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-188-235-107.us-east-2.compute.amazonaws.com
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
 
 
 
 #install anaconda
 https://medium.com/@josemarcialportilla/getting-spark-python-and-jupyter-notebook-running-on-amazon-ec2-dec599e1c297
+export PATH=/home/ec2-user/anaconda3/bin:$PATH
 
 #install mongo
 https://docs.mongodb.com/ecosystem/platforms/amazon-ec2/
 pip install pymongo
 
-#move script over
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/1_data_coll/route_to_db.py ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
+# #split routes.csv files & zip
+# split -l 20000 routes88k.csv
+# zip -r r88k.zip r88k/
 
-#transfer classics
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/ClassicRouteIds.csv ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
+#move script over
+# scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/1_data_coll/route_to_db.py ec2-user@ec2-13-59-88-140.us-east-2.compute.amazonaws.com:~/
+#
+# #transfer routes zip
+# scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/1_routeIDs/r88k.zip ec2-user@ec2-13-59-88-140.us-east-2.compute.amazonaws.com:~/
 
 #transfer test rts
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/testroutes.csv ec2-user@ec2-52-14-39-57.us-east-2.compute.amazonaws.com:~/
-
+#scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/routes_sample1000.csv ec2-user@ec2-13-59-88-140.us-east-2.compute.amazonaws.com:~/
 
 # run script on EC2
+nano route_to_db.py
+#insert
+/home/ec2-user/r88k/routes88k_5.csv
+
+
+$ screen
+$ python routes_to_db.py
+
+#check on it
+ps -ax
+cat r2_db_log.txt
 
 # create DB dump on EC2
 mongodump -d routes_db #-o <directory_backup>

@@ -2,13 +2,13 @@ import requests, random, time, sys
 from pymongo import MongoClient
 
 #Input file paths:
-loc_r = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/routes_sample.csv'
+loc_r = '<FILEPATH>'
 base_url = 'https://www.mountainproject.com/'
 
 #Establish output destinations:
 client = MongoClient() # adjust this line when wrting to s3 bucket to include s3 url/port info?
 db = client.routes_db
-log_path = 'log_tester2.txt'
+log_path = 'r2_db_log.txt'
 
 def route_to_db(base_url,routeid):
         '''
@@ -42,7 +42,7 @@ def main():
     log_file = open(log_path,"w")
     sys.stdout = log_file
     #loop through and scrape routes to db
-    for i,routeid in enumerate(routes[:100]):
+    for i,routeid in enumerate(routes):
         try:
             print('retrieving route: {}'.format(routeid))
             print('{} / {} routes completed'.format(i,len(routes)))
