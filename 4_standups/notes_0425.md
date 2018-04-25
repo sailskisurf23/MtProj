@@ -17,7 +17,9 @@ Since Monday I accomplished,
 
 Today,
 
-1. I'll then do some basic EDA, looking at the sparsity of the data (how many routes users have rated etc.),
+1. 
+
+2. I'll then do some basic EDA, looking at the sparsity of the data (how many routes users have rated etc.),
 
 2. do SVD using surprise to make my first iteration of a recommender on a small subsample of the data.
 
