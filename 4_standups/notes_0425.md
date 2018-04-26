@@ -17,10 +17,16 @@ Since Monday I accomplished,
 
 Today,
 
-1. 
+1. combine all scraped mongo dumps locally (still running unfortunately, will get to this EOD)
 
-2. I'll then do some basic EDA, looking at the sparsity of the data (how many routes users have rated etc.),
+2. *get rest endpoints to Ian.. eg json string to and from.*
 
-2. do SVD using surprise to make my first iteration of a recommender on a small subsample of the data.
+3. *do some basic EDA, looking at the sparsity of the data (how many routes users have rated etc.)*
+    - looked at 10k routes > has 100k ratings from 17k users.
+    - estimate 100k routes > 1M ratings from 30k Users
+      - estimated density 1M / 3B = 1 / 3k; not sure how to evaluate this
 
-3. get rest endpoints to Ian.. eg json string to and from.
+4. do SVD using surprise to make my first iteration of a recommender on a small subsample of the data.
+
+
+% make sure to handle cold start case or just drop those users/ routes
