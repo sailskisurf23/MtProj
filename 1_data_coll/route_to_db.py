@@ -6,7 +6,7 @@ loc_r = '<FILEPATH>'
 base_url = 'https://www.mountainproject.com/'
 
 #Establish output destinations:
-client = MongoClient() # adjust this line when wrting to s3 bucket to include s3 url/port info?
+client = MongoClient() 
 db = client.routes_db
 log_path = 'r2_db_log.txt'
 

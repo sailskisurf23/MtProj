@@ -121,6 +121,3 @@ def parse_stats(entry):
         userids.append(userid)
         star_counts.append(star_count)
     return [tup for tup in zip(routeids,userids,star_counts)]
-
-
-    
