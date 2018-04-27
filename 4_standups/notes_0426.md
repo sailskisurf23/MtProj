@@ -15,7 +15,7 @@ Today,
 1. *Combine all scraped mongo dumps locally*
 
 2. parse all data I need out of the routes pages, grab data I need from API
-  - scrape route data for filters from API (maybe save this for later)
+  - *scrape route data for filters from API (maybe save this for later)*
   - create master RUS file
   - **parse route descriptions & comments**
 
@@ -23,6 +23,4 @@ Today,
   - set up ec2,
   - installing insomnia,
   - get hello world flask app up and running
-
-
   - make sure to handle cold start case or just drop those users/ routes

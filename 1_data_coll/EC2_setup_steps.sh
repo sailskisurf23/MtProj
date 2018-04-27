@@ -9,6 +9,11 @@ ec2-user@ec2-18-188-235-107.us-east-2.compute.amazonaws.com
 ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com
 #5
 ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
+# Badass
+ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com
+# webapp
+xxxx
+
 
 #tunnel through
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-13-59-88-140.us-east-2.compute.amazonaws.com
@@ -16,7 +21,10 @@ ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-188-204-117.u
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-188-235-107.us-east-2.compute.amazonaws.com
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
-
+#Badass
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com
+#webapp
+xxxxx
 
 
 #install anaconda
@@ -48,7 +56,6 @@ nano route_to_db.py
 #insert
 /home/ec2-user/r88k/routes88k_5.csv
 
-
 $ screen
 $ python routes_to_db.py
 
@@ -64,3 +71,13 @@ scp -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-13-59-88-140.us-
 scp -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-188-204-117.us-east-2.compute.amazonaws.com:/home/ec2-user/dump_2.zip .
 scp -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-188-235-107.us-east-2.compute.amazonaws.com:/home/ec2-user/dump_3.zip .
 scp -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com:/home/ec2-user/dump_4.zip .
+
+#split big files into chunks
+split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_1/routes_db/routes_db.bson /home/ec2-user/alldumps/4_dumps/dump_1/routes_db/
+split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_2/routes_db/routes_db.bson /home/ec2-user/alldumps/4_dumps/dump_2/routes_db/
+split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_3/routes_db/routes_db.bson /home/ec2-user/alldumps/4_dumps/dump_3/routes_db/
+split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_4/routes_db/routes_db.bson /home/ec2-user/alldumps/4_dumps/dump_4/routes_db/
+split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_5/routes_db/routes_db.bson /home/ec2-user/alldumps/4_dumps/dump_5/routes_db/
+
+#move read_dump_to_rus
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/read_dump_to_rus.py ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/
