@@ -79,5 +79,19 @@ split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_3/routes_db/routes_db.bson /
 split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_4/routes_db/routes_db.bson /home/ec2-user/alldumps/4_dumps/dump_4/routes_db/
 split -b 1000m /home/ec2-user/alldumps/4_dumps/dump_5/routes_db/routes_db.bson /home/ec2-user/alldumps/4_dumps/dump_5/routes_db/
 
+split -b 1000m /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_1/routes_db/routes_db.bson /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_1/routes_db/
+split -b 1000m /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_2/routes_db/routes_db.bson /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_2/routes_db/
+split -b 1000m /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_3/routes_db/routes_db.bson /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_3/routes_db/
+split -b 1000m /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_4/routes_db/routes_db.bson /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_4/routes_db/
+split -b 1000m /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_5/routes_db/routes_db.bson /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_5/routes_db/
+
+
 #move read_dump_to_rus
 scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/read_dump_to_rus.py ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/
+
+
+mongorestore -d routes_db -c dump1 /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_1/routes_db/routes_db.bson
+mongorestore -d routes_db -c dump2 /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_2/routes_db/routes_db.bson
+mongorestore -d routes_db -c dump3 /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_3/routes_db/routes_db.bson
+mongorestore -d routes_db -c dump4 /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_4/routes_db/routes_db.bson
+mongorestore -d routes_db -c dump5 /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/4_dumps/dump_5/routes_db/routes_db.bson
