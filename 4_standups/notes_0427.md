@@ -10,28 +10,27 @@ Since yesterday I accomplished,
 
 3. *Combine all scraped mongo dumps locally*
 
-4. *Spin up EC2, get 'hello world' running as response to JSON request.
-  - Then hardcode 10 routes as JSON response to*
-  - Test with insomnia
+4. *Spin up EC2, get 'hello world' running as response to JSON request.*
+  - *Then hardcode 10 routes as JSON response to*
+  - *Test with insomnia*
 
 5. *Parse features into route_features.csv*
   - *Do a lot of cleaning*
 
 6. *Create rus_master.csv*
 
-7. Do Analysis:
-  - Plot histogram and identify cold starts.
-  - Look at sparsity.
+7. *Do Analysis:*
+  - *Plot histogram and identify cold starts.
+  - Look at sparsity.*
+  - Determine threshold for 'cold-start', justify it in note to Dan/Joe
   - Make some Hypotheses about SVD Parameters.
-
-------- EOD Friday (or Sunday if necessary)-----------
-
-
 
 7. fit model to rus_clean.csv
   - try on EC2 with Surprise
     - if this doesn't work, will need to cluster compute using PYSPARK
   - grid search params (if initial fit takes >2-3mins, use subset of rus_clean.csv)
+
+--- EOD Monday---
 
 8. Build recommender
   - Read route features in as DF
@@ -39,6 +38,8 @@ Since yesterday I accomplished,
   - use algo.test(list of userID(same), list of routeIDs)
 
 9. Incorporate recommender into Flask app
+
+--- EOD Weds ---
 
 10. Work on Documentation / Presentation
 

@@ -94,5 +94,8 @@ mongorestore -d routes_db -c dump3 /home/ec2-user/alldumps/4_dumps/dump_3/routes
 mongorestore -d routes_db -c dump4 /home/ec2-user/alldumps/4_dumps/dump_4/routes_db/routes_db.bson
 mongorestore -d routes_db -c dump5 /home/ec2-user/alldumps/4_dumps/dump_5/routes_db/routes_db.bson
 
+
+#move App
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/app.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
 #run webapp
-sudo ~/anaconda3/bin/python app.py
+sudo FLASK_APP=app.py ~/anaconda3/bin/python -m flask run --host=0.0.0.0 --port=80
