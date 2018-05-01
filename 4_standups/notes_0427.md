@@ -24,25 +24,26 @@ Since yesterday I accomplished,
   - Look at sparsity.*
   - Determine threshold for 'cold-start', justify it in note to Dan/Joe
   - Make some Hypotheses about SVD Parameters.
-
-7. fit model to rus_clean.csv
-  - try on EC2 with Surprise
-    - if this doesn't work, will need to cluster compute using PYSPARK
   - grid search params (if initial fit takes >2-3mins, use subset of rus_clean.csv)
+  - keep going with Analysis: MOPs, visualizations (look at ratings by user bins)
+
+7. fit model to df_rus (chopped) - use EC2
+  - return and pickle df_rup
 
 --- EOD Monday---
 
-8. Build recommender
+8. *Build recommender
   - Read route features in as DF
-  - filter routes based on JSON string (return list of routeIDs)
-  - use algo.test(list of userID(same), list of routeIDs)
+  - filter routes based on JSON string (return list of routeIDs)*
+  - pull in df_rup (predictions matrix) and return top recs (json_handler_v1.py)
 
-9. Incorporate recommender into Flask app
+9. *Incorporate recommender into Flask app*
 
 --- EOD Weds ---
 
-10. Work on Documentation / Presentation
+10. Work on Documentation/ cleaning scripts & NBs
 
-11. Do NLP analysis
+11. Presentation
 
-12. Add 'Keywords functionality into App'
+12. Do NLP analysis
+  - Add 'Keywords functionality into App'

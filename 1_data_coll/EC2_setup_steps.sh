@@ -94,8 +94,19 @@ mongorestore -d routes_db -c dump3 /home/ec2-user/alldumps/4_dumps/dump_3/routes
 mongorestore -d routes_db -c dump4 /home/ec2-user/alldumps/4_dumps/dump_4/routes_db/routes_db.bson
 mongorestore -d routes_db -c dump5 /home/ec2-user/alldumps/4_dumps/dump_5/routes_db/routes_db.bson
 
-
 #move App
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/app.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/json_handler.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/handler.pkl ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/app_v2.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
+
 #run webapp
-sudo FLASK_APP=app.py ~/anaconda3/bin/python -m flask run --host=0.0.0.0 --port=80
+#sudo FLASK_APP=app_v2.py ~/anaconda3/bin/python -m flask run --host=0.0.0.0 --port=80
+sudo ~/anaconda3/bin/python app_v2.py --host=0.0.0.0 --port=80
+
+# modelling on Badass
+  # move rus rus_master
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/3_rus/rusfiles/rus_master.csv ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/
+  # move ah helpers
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/analysis_helpers.py ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/
+  # move make_recommender.py
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/make_recommender.py ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/

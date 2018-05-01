@@ -17,7 +17,6 @@ def main():
 	handler1 = initialize_handler()
 	write_loc = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/handler.pkl'
 	pickle.dump(handler1, open(write_loc, 'wb'))
-	pass
 
 if __name__ == '__main__':
 	main()
