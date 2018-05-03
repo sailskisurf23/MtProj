@@ -10,7 +10,7 @@ ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com
 #5
 ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
 # Badass
-ec2-user@ec2-18-217-255-22.us-east-2.compute.amazonaws.com
+ec2-user@ec2-18-222-65-47.us-east-2.compute.amazonaws.com
 # webapp
 ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com
 
@@ -23,10 +23,9 @@ ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-218-9-15.us-e
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
 #Badass
 #ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com
-ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-217-255-22.us-east-2.compute.amazonaws.com
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-222-65-47.us-east-2.compute.amazonaws.com
 #webapp
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com
-
 
 
 #install anaconda
@@ -106,8 +105,10 @@ sudo ~/anaconda3/bin/python app_v1.py --host=0.0.0.0 --port=80
 
 # modelling on Badass
   # move rus rus_master
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/3_rus/rusfiles/rus_master.csv ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/3_rus/rusfiles/rus_master.csv ec2-user@ec2-18-222-65-47.us-east-2.compute.amazonaws.com:~/
   # move ah helpers
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/analysis_helpers.py ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/analysis_helpers.py ec2-user@ec2-18-222-65-47.us-east-2.compute.amazonaws.com:~/
   # move make_recommender.py
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/make_recommender.py ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/make_recommender.py ec2-user@ec2-18-222-65-47.us-east-2.compute.amazonaws.com:~/
+  # move gridsearch.py
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/5_analysis/gridsearch.py ec2-user@ec2-18-222-65-47.us-east-2.compute.amazonaws.com:~/

@@ -2,8 +2,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from surprise import SVD, Dataset, accuracy, Reader
-from surprise.model_selection import train_test_split
+from surprise import SVD, SVDpp, Dataset, accuracy, Reader
+from surprise.model_selection import train_test_split, GridSearchCV
+
+######################### Statistics ##########################
 
 def unq_u_r(df):
     '''
@@ -43,6 +45,19 @@ def mat_density(df):
     mat_size = n_route * n_user
     return df.shape[0] / mat_size
 
+def pr_mat_stats(df, title="Matrix Stats"):
+    '''
+    Print size, shape and density of matrix
+    '''
+    n_route , n_user = unq_u_r(df)
+    mat_size = n_route * n_user
+    density = mat_density(df)
+    print(title)
+    print('---------------------')
+    print('matrix size: {}'.format(mat_size))
+    print('matrix shape: users {}, routes {}'.format(n_user,n_route))
+    print('matrix density: {}'.format(density))
+
 def algo_metrics(df):
     '''
     Return metrics algo metrics for df: (rmse,mae,fcp)
@@ -58,25 +73,13 @@ def algo_metrics(df):
     reader = Reader(line_format='user item rating', sep=',', skip_lines=1)
     data = Dataset.load_from_df(df, reader=reader)
     trainset, testset = train_test_split(data, test_size=.2)
-
+    # Fit out of the box SVD to trainset and predict on test set
     algo = SVD()
     algo.fit(trainset)
     predictions = algo.test(testset)
-
     return accuracy.rmse(predictions), accuracy.mae(predictions), accuracy.fcp(predictions)
 
-def pr_mat_stats(df,title="Matrix Stats"):
-    '''
-    Print size, shape and density of matrix
-    '''
-    n_route , n_user = unq_u_r(df)
-    mat_size = n_route * n_user
-    density = mat_density(df)
-    print(title)
-    print('---------------------')
-    print('matrix size: {}'.format(mat_size))
-    print('matrix shape: users {}, routes {}'.format(n_user,n_route))
-    print('matrix density: {}'.format(density))
+##################### DataFrame Manipulation ######################
 
 def df_add_counts(df):
     '''
@@ -128,8 +131,7 @@ def add_counts_bins(df):
     df_counts_bins['u_bin'] = np.select(conditions, choices, default='None')
     return df_counts_bins
 
-
-def rus_chop(df,u=5,r=5):
+def rus_chop(df, u=5, r=5):
     '''
     Chop RUS DF based on minimum cold-start thresholds.
 
@@ -147,7 +149,9 @@ def rus_chop(df,u=5,r=5):
     df_chopped = df_counts[(df_counts['count_ur'] >= u) & (df_counts['count_ru'] >= r)]
     return df_chopped[['route','user','num_stars']]
 
-def thresh_density_arr(df,u=5,r=5):
+################# Gridsearching, HEAVYLOAD ####################
+
+def thresh_density_arr(df, u=5, r=5):
     '''
     Compute matix density for all combinations of thresholds for range(u),range(r)
 
@@ -167,7 +171,7 @@ def thresh_density_arr(df,u=5,r=5):
             density_arr[i,j] = density
     return density_arr
 
-def thresh_metrics_arrs(df,u=5,r=5):
+def thresh_metrics_arrs(df, u=5, r=5):
     '''
     Compute metrics for every combination of thresholds
 
@@ -193,7 +197,28 @@ def thresh_metrics_arrs(df,u=5,r=5):
     return arr_rmse, arr_mae, arr_fcp
 
 
-def plt_count_hists(df,n=30):
+
+def suprise_gridsearch(data, algo_class, param_grid):
+    '''
+    Prints off best results & parameters from gridsearch
+
+    ---Parameters---
+    data (suprise dataset)
+    algo_class (algo_class)
+    param_grid (dictionary)
+    '''
+
+    gs = GridSearchCV(algo_class, param_grid,
+                    measures=['rmse', 'mae'], cv=3, n_jobs=-1)
+    gs.fit(data)
+    print(gs.best_score['rmse'])
+    print(gs.best_params['rmse'])
+
+
+####################### PLOTTING #################################
+
+
+def plt_count_hists(df, n=30):
     '''
     Plot hists of rating counts, routes by user and users by route
 
@@ -203,19 +228,17 @@ def plt_count_hists(df,n=30):
     '''
     u_r_counts,r_u_counts = ru_counts(df)
     f, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=(14,5))
-
     ax1.hist(u_r_counts, bins=list(range(1,n+1)))
     ax1.set_title('Count routes rated by user')
     ax1.set_ylabel('User count')
     ax1.set_xlabel('Number of route ratings')
-
     ax2.hist(r_u_counts, bins=list(range(1,n+1)))
     ax2.set_title('Count user ratings by route')
     ax2.set_ylabel('Route count')
     ax2.set_xlabel('Number of user ratings')
     plt.show()
 
-def plt_cumsum(df,n=30):
+def plt_cumsum(df, n=30):
     '''
     Plot proportion of users excluded by varying threshold
 
@@ -226,14 +249,12 @@ def plt_cumsum(df,n=30):
     u_r_counts, r_u_counts = ru_counts(df)
     u_r_cumsum = u_r_counts.value_counts().sort_index().cumsum() / unq_u_r(df)[0]
     r_u_cumsum = r_u_counts.value_counts().sort_index().cumsum() / unq_u_r(df)[1]
-
     f, (ax1, ax2) = plt.subplots(1, 2, sharey=True,figsize=(14,5))
     ax1.plot(u_r_cumsum)
     ax1.set_xlim([0, n+1])
     ax1.set_title('Cumsum routes rated by user')
     ax1.set_ylabel('Proportion of users excluded')
     ax1.set_xlabel('Number of route ratings - thresh')
-
     ax2.plot(r_u_cumsum)
     ax2.set_xlim([0, n+1])
     ax2.set_title('Cumsum user ratings by route')
@@ -241,7 +262,7 @@ def plt_cumsum(df,n=30):
     ax2.set_xlabel('Number of user ratings - thresh')
     plt.show()
 
-def thresh_heatmap(arr,title):
+def thresh_heatmap(arr, title):
     '''
     Plot heatmap of a an array of metrics by varying threshold
 
@@ -269,3 +290,17 @@ def plot_errorbars(df):
     plt.xticks(range(5),u_bin_labels)
     plt.title('Errorbars by Number of Routes Rated')
     plt.show()
+
+def plot_RMSE_userthresh(arr_rmse):
+    '''
+
+    '''
+    plt.plot(arr_rmse[0])
+    pass
+
+def plot_RMSE_routethresh(arr_rmse):
+    '''
+
+    '''
+    plt.plot(arr_rmse[:,0])
+    pass
