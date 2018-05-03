@@ -22,20 +22,20 @@ Since yesterday I accomplished,
 7. *Do Analysis:*
   - *Plot histogram and identify cold starts.
   - Look at sparsity.*
-  - Determine threshold for 'cold-start', justify it in note to Dan/Joe
+  - Look at 3-4 Cold start thresholds
   - Make some Hypotheses about SVD Parameters.
-  - grid search params (if initial fit takes >2-3mins, use subset of rus_clean.csv)
+  - grid search params (if initial fit takes >2-3mins, use subset of rus_chopped.csv)
   - keep going with Analysis: MOPs, visualizations (look at ratings by user bins)
 
-7. fit model to df_rus (chopped) - use EC2
-  - return and pickle df_rup
+7. *fit model to df_rus (chopped) - use EC2
+  - return and pickle df_rup*
 
 --- EOD Monday---
 
 8. *Build recommender
   - Read route features in as DF
   - filter routes based on JSON string (return list of routeIDs)*
-  - pull in df_rup (predictions matrix) and return top recs (json_handler_v1.py)
+  - *pull in df_rup (predictions matrix) and return top recs (json_handler_v1.py)*
 
 9. *Incorporate recommender into Flask app*
 

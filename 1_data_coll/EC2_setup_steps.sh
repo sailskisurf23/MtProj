@@ -10,7 +10,7 @@ ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com
 #5
 ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
 # Badass
-ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com
+ec2-user@ec2-18-217-255-22.us-east-2.compute.amazonaws.com
 # webapp
 ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com
 
@@ -22,7 +22,8 @@ ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-188-235-107.u
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-218-9-15.us-east-2.compute.amazonaws.com
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-219-67-74.us-east-2.compute.amazonaws.com
 #Badass
-ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com
+#ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-191-25-129.us-east-2.compute.amazonaws.com
+ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-217-255-22.us-east-2.compute.amazonaws.com
 #webapp
 ssh -i /Users/colinbrochard/.aws/colinbrochard.pem ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com
 
@@ -95,13 +96,13 @@ mongorestore -d routes_db -c dump4 /home/ec2-user/alldumps/4_dumps/dump_4/routes
 mongorestore -d routes_db -c dump5 /home/ec2-user/alldumps/4_dumps/dump_5/routes_db/routes_db.bson
 
 #move App
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/json_handler.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/handler.pkl ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
-scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/app_v2.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/json_handler_v1.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/handler_v1.pkl ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/colinbrochard/.aws/colinbrochard.pem /Users/colinbrochard/DSI_Capstone_local/MtProjRec/6_app/app_v1.py ec2-user@ec2-18-221-10-29.us-east-2.compute.amazonaws.com:~/
 
 #run webapp
 #sudo FLASK_APP=app_v2.py ~/anaconda3/bin/python -m flask run --host=0.0.0.0 --port=80
-sudo ~/anaconda3/bin/python app_v2.py --host=0.0.0.0 --port=80
+sudo ~/anaconda3/bin/python app_v1.py --host=0.0.0.0 --port=80
 
 # modelling on Badass
   # move rus rus_master
