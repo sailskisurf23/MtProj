@@ -346,6 +346,19 @@ def scatter_stars_counts4(df,cmap):
     plt.title('Count of Routes by Average Star Value', size=16)
     plt.show()
 
+def violins(algo, testset):
+    '''
+    Plot violin chart showing descrepancy between true and predicted ratings.
+    '''
+    predictions = algo.test(testset)
+    preds_df = pd.DataFrame(predictions)
+    data = [preds_df['est'][preds_df['r_ui'] == rating] for rating in range(1, 5)]
+    plt.violinplot(data, range(1,5), showmeans=True)
+    plt.xlabel('True Ratings')
+    plt.ylabel('Predicted Ratings')
+    plt.title('True vs. SVD Recommender Predicted Ratings')
+    plt.show()
+
 def plot_errorbars(df):
     '''
     Plot errorbars by userbin

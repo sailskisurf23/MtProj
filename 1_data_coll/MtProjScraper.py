@@ -1,9 +1,8 @@
 import csv
 import mt_scrape_helpers as mh
 
-
 class MPS(object):
-    """Scraper object build for harvesting routeIDs and userIDs from MtProj
+    """Class built for harvesting routeIDs and userIDs from MtProj
 
     Attributes:
         routeID_bucket (set): routeIDs harvested
@@ -28,7 +27,6 @@ class MPS(object):
 
         self.route_errors_bucket = set()
         self.user_errors_bucket = set()
-
 
     def run_scraper(self, n):
         """

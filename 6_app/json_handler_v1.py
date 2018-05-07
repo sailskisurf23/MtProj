@@ -1,3 +1,5 @@
+# This module is used to process incoming JSON query strings from app
+# Returns list of top 10 recommended routes using alogrithm in INIT
 import pandas as pd
 import numpy as np
 import json, pickle

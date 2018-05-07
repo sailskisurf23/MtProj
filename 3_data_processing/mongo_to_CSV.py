@@ -1,6 +1,6 @@
+#This script is used to parse Route User Star data from the mongo database containg route descriptions
 import sys,csv
 sys.path.insert(0, '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/1_data_coll/')
-
 import pandas as pd
 import mt_scrape_helpers as mh
 from pymongo import MongoClient

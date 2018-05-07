@@ -1,3 +1,4 @@
+# This script is used to create a clean database of route features for use in our app
 import pymongo, csv
 import pandas as pd
 import numpy as np

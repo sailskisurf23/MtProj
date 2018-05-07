@@ -1,10 +1,11 @@
+# This script is used to compile a database of useful rotue features by querying the Mountain Project API.
 import requests, random, time, sys, json
 from pymongo import MongoClient
 
-#Input file paths:
+# Input file paths:
 loc_r = '/Users/colinbrochard/DSI_Capstone_local/MtProjRec/2_data/1_routeIDs/r88k/routes88k.csv'
 
-#Establish output destinations:
+# Establish output destinations:
 client = MongoClient()
 db = client.routesAPI_db
 log_path = 'rAPI_log.txt'
