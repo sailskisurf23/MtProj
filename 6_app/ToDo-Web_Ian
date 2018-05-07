@@ -1,6 +1,0 @@
-define 'endpoints'
-
-you sending me json with userid, location, potentials more fields
-ajax call to my endpoint, and takes in response.
-
-visual mockup

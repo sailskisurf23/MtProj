@@ -1,10 +1,8 @@
-# [Mountain Project](www.MountainProject.com) Recommenders
+# [Mountain Project](www.MountainProject.com) Recommender
 
 ### Background
 
 Mountain project is a climbing website with an extensive [route database](https://www.mountainproject.com/route-guide), active discussion [forum](https://www.mountainproject.com/forum), and ~20k active users. Users can browse for climbing routes, **tick** the routes that they have climbed and **rate** them on a 4-star scale. Additionally, users can upload photos and share useful information about their experience on each route in the comments section.
-
-Mountain Project currently has [partner search](https://www.mountainproject.com/partner-finder) function that allows users to search partners based on climbing ability and a route search function for finding routes based on difficulty. Both functions can be searched based on location as well.
 
 ### Research
 The approaches to be employed in this project have been implemented and documented by others:
@@ -16,11 +14,9 @@ The approaches to be employed in this project have been implemented and document
 
 ### Objective
 
-I want to make it easier for users to find routes that they will be interested in and partners who will be a good fit. My goal is to build a partner and route recommenders based on route and user data harvested from the Mountain Project website.
+My goal is to make it easier for users to find routes that they will be interested in. To do this I built a route recommender based on route and user data harvested from the Mountain Project website.
 
 For the **Route Recommender**, my idea is to construct a matrix of all routes and users. The values could either be *explicit* (the star rating given to a route by that user), or *implicit* (whether or not a user has **ticked** a route or whether or not it is on their **To-Do list**). I will use a matrix decomposition method to fill the missing values in the matrix and thereby predict how each user would rate each climb. For implementation, if a user were looking for routes in a particular area - the recommender could return the 5-10 routes that would appeal to them most *in that area*.
-
-For the **Partner Recommender**, the goal is to suggest partners that have similar objectives and a similar level of experience. For objectives, we can evaluate how many **To-Do's** each user has in common with another. Similarly, for experience we can look at each user's **Ticks**.
 
 One possible avenue of further exploration would be to incorporate users' **comments** on each route using NLP in order to add insight as to the character of each route (and each user).
 

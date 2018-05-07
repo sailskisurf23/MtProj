@@ -147,7 +147,7 @@ def rus_chop(df, u=5, r=5):
     df_counts = df_add_counts(df)
     # chop df based on threshold
     df_chopped = df_counts[(df_counts['count_ur'] >= u) & (df_counts['count_ru'] >= r)]
-    return df_chopped[['route','user','num_stars']]
+    return df_chopped[['user','route','num_stars']]
 
 ################# Gridsearching, HEAVYLOAD ####################
 
@@ -276,6 +276,75 @@ def thresh_heatmap(arr, title):
     ax.set(xlabel='User Threshold',ylabel='Route Threshold')
     plt.show()
 
+def plot_star_counts(df):
+    '''
+    Plot count of ratings by star value
+    '''
+    plt.figure(figsize=(10,6))
+    plt.bar(list(range(5)),df['num_stars'].value_counts(sort=False))
+    plt.xlabel('Star Value')
+    plt.ylabel('Counts')
+    plt.title('Count of ratings by star value', size=16)
+    plt.show()
+
+def hist_star_counts_byroute(df):
+    '''
+    Plot histogram of routes by average star value
+    '''
+    plt.figure(figsize=(14,5))
+    plt.hist(df.groupby('route').mean()['num_stars'], bins = 10, rwidth=.8)
+    plt.xlabel('Star Value')
+    plt.ylabel('Counts')
+    plt.title('Count of routes by average star value', size=16)
+    plt.show()
+
+def scatter_stars_counts(df,cmap):
+    df_agg = df.groupby('route').agg(['mean','count'])['num_stars']
+    df_agg['meanxcount'] = (df_agg['mean'] * np.log(np.log(df_agg['count'])))**2.5
+    plt.figure(figsize=(10,6))
+    plt.scatter(df_agg['mean'], df_agg['count'],alpha = 1, cmap=cmap,c=df_agg['meanxcount'])
+    plt.xlabel('Star Value')
+    plt.ylabel('Counts')
+    plt.ylim(0,1250)
+    plt.title('Count of Routes by Average Star Value', size=16)
+    plt.colorbar(ticks=[0])
+    plt.show()
+
+def scatter_stars_counts2(df):
+    df_agg = df.groupby('route').agg(['mean','count'])['num_stars']
+    df_agg['meanxcount'] = (df_agg['mean'] * np.log(np.log(df_agg['count'])))**2.5
+    df_agg1 = df_agg[df_agg['meanxcount'] >= 75]
+    df_agg2 = df_agg[df_agg['meanxcount'] < 75]
+
+    plt.figure(figsize=(10,6))
+    plt.scatter(df_agg1['mean'], df_agg1['count'], alpha = .7, c='red')
+    plt.scatter(df_agg2['mean'], df_agg2['count'], alpha = .7, c='blue')
+    plt.xlabel('Star Value')
+    plt.ylabel('Counts')
+    plt.ylim(0,1250)
+    plt.title('Count of Routes by Average Star Value', size=16)
+
+def scatter_stars_counts3(df_agg,cmap):
+    df_agg['meanxcount'] = (df_agg['mean'] * np.log(np.log(df_agg['count'])))**2.5
+    plt.figure(figsize=(10,6))
+    plt.scatter(df_agg['mean'], df_agg['count'],alpha = 1, cmap=cmap,c=df_agg['est'])
+    plt.xlabel('Star Value')
+    plt.ylabel('Counts')
+    plt.ylim(0,1250)
+    plt.title('Count of Routes by Average Star Value', size=16)
+    plt.colorbar(ticks=[0])
+    plt.show()
+
+def scatter_stars_counts4(df,cmap):
+    df_agg = df.groupby('route').agg(['mean','count'])['num_stars']
+    df_agg['meanxcount'] = (df_agg['mean'] * np.log(np.log(df_agg['count'])))**2.5
+    plt.figure(figsize=(10,6))
+    plt.scatter(df_agg['mean'], df_agg['count'],alpha = .5)
+    plt.xlabel('Star Value')
+    plt.ylabel('Counts')
+    plt.ylim(0,1250)
+    plt.title('Count of Routes by Average Star Value', size=16)
+    plt.show()
 
 def plot_errorbars(df):
     '''
@@ -291,16 +360,57 @@ def plot_errorbars(df):
     plt.title('Errorbars by Number of Routes Rated')
     plt.show()
 
-def plot_RMSE_userthresh(arr_rmse):
+def plot_RMSE_userthresh(df, arr_rmse, title, r=0):
     '''
+    Plot RMSE by user-coldstart threshold; assumes route threshold = r
+    '''
+    arr_rmse_df = pd.DataFrame(arr_rmse)
+    usersurvivors = []
+    for u in range(30):
+        usersurvivors.append(unq_u_r(rus_chop(df,u,r))[0])
+    usersurvivors_df = pd.DataFrame(usersurvivors,columns=['survivors']).transpose()
+    arr_rmse_survivors_df = pd.concat([arr_rmse_df,usersurvivors_df],axis=0).transpose()
 
-    '''
-    plt.plot(arr_rmse[0])
-    pass
+    fig = plt.figure(figsize=(10,6))
+    ax = fig.add_subplot(111)
+    ax.plot(arr_rmse_survivors_df[0],c='blue',label='RMSE')
+    ax.set_title(title, size=16)
+    ax.set_ylim(.6,.75)
+    ax.set_xlabel('Cold-start threshold')
+    ax.set_ylabel('RMSE')
 
-def plot_RMSE_routethresh(arr_rmse):
-    '''
+    ax2 = ax.twinx()
+    ax2.plot(arr_rmse_survivors_df['survivors'],c='green',label='Users Retained')
+    ax2.set_ylim(0,40000)
+    ax2.set_ylabel('Users retained')
+    ax2.grid(False)
 
+    plt.show()
+
+def plot_RMSE_routethresh(df, arr_rmse, title, u=0):
     '''
-    plt.plot(arr_rmse[:,0])
-    pass
+    Plot RMSE by route-coldstart threshold; assumes user threshold = u
+    '''
+    arr_rmse_df = pd.DataFrame(arr_rmse)
+    route_survivors = []
+    for r in range(30):
+        route_survivors.append(unq_u_r(rus_chop(df,u,r))[1])
+    route_survivors_df = pd.DataFrame(route_survivors,columns=['survivors'])
+    arr_rmse_survivors_df = pd.concat([arr_rmse_df,route_survivors_df],axis=1)
+
+    fig = plt.figure(figsize=(10,6))
+    ax = fig.add_subplot(111)
+    ax.plot(arr_rmse_survivors_df[0],c='blue',label='RMSE')
+    ax.set_title(title, size=16)
+    ax.set_ylim(.6,.75)
+    ax.set_xlabel('Cold-start threshold')
+    ax.set_ylabel('RMSE')
+    ax.legend()
+
+    ax2 = ax.twinx()
+    ax2.plot(arr_rmse_survivors_df['survivors'],c='green',label='Routes Retained')
+    ax2.set_ylim(0,90000)
+    ax2.set_ylabel('Users retained')
+    ax2.grid(False)
+
+    plt.show()
