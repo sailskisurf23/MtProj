@@ -27,7 +27,7 @@ I needed to clean and standardize my data to make it useful for my recommender a
 
 The key to the recommender was to create the **RUS file** which was a CSV with three columns: `routeID`,`userID`,`star`; [code](https://github.com/sailskisurf23/MtProj/blob/master/3_data_processing/mongo_to_CSV.py). Each row contains the star value on a 4-star scale that each user gave to each route. The data in this file can be represented as a **sparse user-item matrix**. The goal of our recommender is to fill in the missing values in this matrix and thereby *predict* what a user would rate the climbs that she has not climbed.  
 
-![Sparse user-item matrix](./2_data/7_images/sparsemat.png)
+![Sparse user-item matrix](./8_README_stuff/sparsemat.png)
 
 ### Analysis
 
@@ -43,11 +43,11 @@ Two most ubiquitous types of recommender systems are *Content-Based* and *Col
 
 One important thing to consider is the distribution of the ratings. We have a good distribution of ratings, so this will be helpful for picking up on users' preferences.
 
-![](./2_data/7_images/hist.png)
+![](./8_README_stuff/hist.png)
 
 Routes with the low star ratings don’t tend have many ratings which makes sense (bad routes aren't climbed often, whereas great climbs get climbed a lot). However, this will have some interesting consequences when we start to consider **The Cold Start Problem**
 
-![](./2_data/7_images/scatter.png)
+![](./8_README_stuff/scatter.png)
 
 #### The Cold Start Problem
 
@@ -55,11 +55,11 @@ A **cold-start** is a user who hasn't rated many items or an item that hasn't be
 
 As we might expect, the error for our model improves as we raise the route threshold:
 
-![](./2_data/7_images/userthresh.png)
+![](./8_README_stuff/userthresh.png)
 
 Interestingly however, the model does not improve as we raise the threshold for the number of ratings required for routes to be included in the model. From the scatterplot above recall that many of the low rated routes fall into the region below the threshold. Therefore the model starts to lose useful information about what routes users *don't like*.
 
-![](./2_data/7_images/routethresh.png)
+![](./8_README_stuff/routethresh.png)
 
 I ended up setting the user threshold to a minimum of 10 routes rated to improve performance. I set the route threshold to three since I felt that routes with fewer ratings than that didn't have reliable info and certainly wouldn't be considered *classics* and therefore I didn't want them to slip into any top ten recommendations.
 
@@ -69,7 +69,7 @@ I used the `suprise` [library](https://surprise.readthedocs.io/en/stable/getting
 
 We ended up with a fairly good result with a RMSE of 0.62. We can also see from these violin plots that our predicted ratings trend nicely with the True ratings, especially in the 3/4 star region which is where it counts for our top-10 recommender.
 
-![](./2_data/7_images/violins.png)
+![](./8_README_stuff/violins.png)
 
 ### Web application <link to Web Application>
 
