@@ -59,6 +59,6 @@ I ended up setting the user threshold to a minimum of 10 routes rated to improve
 
 #### Fitting the Model
 
-I used the `suprise` library to do Singular Value Decomposition and did a bit of grid searching to find the optimal hyperparameters for my dataset. The hyperparameters I focused on were learning rate, regularization rate, and the number of epochs. Due to the size of the dataset, there was a lot of processing power and RAM required to search the grid, so I employed several EC2 instances to search different parts of the "grid".
+I used the `suprise`********<link> library to do Singular Value Decomposition and did a bit of grid searching to find the optimal hyperparameters for my dataset. The hyperparameters I focused on were learning rate, regularization rate, and the number of epochs. Due to the size of the dataset, there was a lot of processing power and RAM required to search the grid, so I employed several EC2 instances to search different parts of the "grid".
 
 ### Web application
