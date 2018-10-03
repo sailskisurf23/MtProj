@@ -13,7 +13,7 @@ log_path = 'r2_db_log.txt'
 
 def route_to_db(base_url,routeid):
         '''
-        Scrape contents of route description and route stats page; write to MongoDBself.
+        Scrape contents of route description and route stats page; write to MongoDB.
         --Parameters--
         base_url (str)
         routeid (str)

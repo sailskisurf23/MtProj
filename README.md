@@ -10,9 +10,9 @@ My goal with this project was to build a recommender system based on data collec
 
 ### Data Collection
 
-The key to building this recommender was to collect the explicit ratings that each user gave to each route that they rated with the goal of creating a **user-item matrix**. Furthermore, for additional analysis, I wanted to grab all of the info I could about each route.
+The key data I needed for my recommender were the explicit ratings that users gave to each route. Furthermore, I wanted to gather as much data about each route as I could for deeper analyses and filters for the recommender app.
 
-The first step to doing this was to compile a list of `routeIDs` which is a unique identifier that MountainProject assigns to each route. For a `userID`, I made an API call to MountainProject and get a list of all of the `routeIDs` which that user had **ticked**. Similarly, for each `routeID`, I parsed out all of the `userIDs` that had rated that particular route. In this way, I was able to bounce back and forth and iteratively expand my set of `routeIDs` to include most of data base.
+ First, I needed to compile a list of all `routeIDs` - a unique identifier that MountainProject assigns to each route. For a `userID`, I made an API call to MountainProject and get a list of all of the `routeIDs` which that user had **ticked**. Similarly, for each `routeID`, I parsed out all of the `userIDs` that had rated that particular route. In this way, I was able to bounce back and forth and iteratively expand my set of `routeIDs` to include most of database.
 
 - Links to code for the [class structure](https://github.com/sailskisurf23/MtProj/blob/master/1_data_coll/MtProjScraper.py) and [helper functions](https://github.com/sailskisurf23/MtProj/blob/master/1_data_coll/mt_scrape_helpers.py)
 
