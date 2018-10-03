@@ -18,7 +18,7 @@ def return_json():
         return jsonify({"message":"no routes found"})
 
 if __name__ == "__main__":
-    #handler_pkl_loc = '/home/ec2-user/handler_v1.pkl'
-    handler_pkl_loc = '/Users/colinbrochard/ProjRepos/MtProj/6_app/ignore/handler_v1.pkl'
+    handler_pkl_loc = '/home/ec2-user/handler_v1.pkl'
+    #handler_pkl_loc = '/Users/colinbrochard/ProjRepos/MtProj/6_app/ignore/handler_v1.pkl'
     handler1 = pickle.load(open(handler_pkl_loc, 'rb'))
     app.run(host="0.0.0.0", port=80, ssl_context=('cert.pem', 'key.pem'))
