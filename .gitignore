@@ -6,4 +6,6 @@
 6_app/ignore/
 7_preso/
 8_misc/
+6_app/key.pem
+6_app/cert.pem
 EC2_Scratchpad.txt
