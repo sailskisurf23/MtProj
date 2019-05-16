@@ -71,11 +71,11 @@ We ended up with a fairly good result with a RMSE of 0.62. We can also see from 
 
 ![](./8_README_stuff/violins.png)
 
-### Web application <link to Web Application>
+### [Web application](http://mp-recommender.surge.sh/)
 
 **Disclaimer, Application is not always running these days as EC2 costs have started to hit my wallet**
 
-The last piece of this project was implementing my recommender into a web [application](http://mp-recommender.netlify.com/). I partnered with a web-developer, [Ian Schummann](https://www.linkedin.com/in/ianschumann/), to build a [front-end](https://github.com/ian-schu/mountain_project_collab). When a user selects items from the drop-downs and hits submit a JSON string is generated and sent to a `Flask` [app](https://github.com/sailskisurf23/MtProj/blob/master/6_app/app_v1.py). The flask app processes this JSON string, filters the route database for the routes that meet the criteria specified, sorts the remaining routes based on the estimated rating and then returns the top 10. The key to this was rolling my recommender model and my filtering variables into a single Python Object which I then pickle and pull into the Flask app. I defined a [class](https://github.com/sailskisurf23/MtProj/blob/master/6_app/json_handler_v1.py) `JSON_handler` to do this.
+The last piece of this project was implementing my recommender into a web [application](http://mp-recommender.surge.sh/). I partnered with a web-developer, [Ian Schummann](https://www.linkedin.com/in/ianschumann/), to build a [front-end](https://github.com/ian-schu/mountain_project_collab). When a user selects items from the drop-downs and hits submit a JSON string is generated and sent to a `Flask` [app](https://github.com/sailskisurf23/MtProj/blob/master/6_app/app_v1.py). The flask app processes this JSON string, filters the route database for the routes that meet the criteria specified, sorts the remaining routes based on the estimated rating and then returns the top 10. The key to this was rolling my recommender model and my filtering variables into a single Python Object which I then pickle and pull into the Flask app. I defined a [class](https://github.com/sailskisurf23/MtProj/blob/master/6_app/json_handler_v1.py) `JSON_handler` to do this.
 
 ### Next steps
 
